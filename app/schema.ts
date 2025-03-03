@@ -5,6 +5,6 @@ export const schema = z.object({
     password: z.string().min(6,"Password must be 6 letters long"),
     phoneNumber: z.string().min(10,"number must 10 digit long").max(10,"enter 10 digit number"),
     country : z.string().min(1,"Country is required"),
-    gender: z.union([z.enum(["yes", "no"]), z.null()]).nullable()
+    gender: z.union([z.enum(["male", "female"]), z.null()]).nullable()
       
 })

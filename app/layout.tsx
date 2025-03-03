@@ -4,6 +4,8 @@ import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
+import ClientLocalizationProvider from "./lib/DatePickerProvider";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +33,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ClientLocalizationProvider>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          </ClientLocalizationProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

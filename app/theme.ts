@@ -9,10 +9,17 @@ const roboto = Roboto({
   });
 
 const theme = createTheme({
+  cssVariables: {
+    colorSchemeSelector: 'data-mui-color-scheme',
+    cssVarPrefix: 'template',
+  },
+  colorSchemes: {
+    light: true,
+    dark: true,
+  }, 
   typography: {
     fontFamily: 'var(--font-roboto)',
   },
-  cssVariables: true,
 });
 
 export default theme;

@@ -4,6 +4,7 @@ import {
   Button,
   Checkbox,
   Container,
+  CssBaseline,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -24,6 +25,10 @@ import { schema } from "./schema";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DefaultValues } from "react-hook-form";
+import { DatePicker, TimePicker } from '@mui/x-date-pickers-pro';
+import dayjs from "dayjs"
+import FileExplorer from "./components/RichTreeView";
+import ColorModeSelect from "./components/ColorModeSelect";
 
 export default function Home() {
   type formData = z.infer<typeof schema>;
@@ -57,11 +62,14 @@ export default function Home() {
   //   } 
   // },[password])
   const onSubmit = (data: formData) => {
+    // console.log("in submit function")
     console.log(data);
   };
 
   return (
     <Container>
+      <CssBaseline enableColorScheme />
+      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
       <Typography
         variant="h6"
         component="h2"
@@ -130,7 +138,6 @@ export default function Home() {
                 <RadioGroup aria-label="gender" {...field}>
                   <FormControlLabel
                     value="female"
-                    // defaultValue={defaultValues.option}
                     control={<Radio />}
                     label="Female"
                   />
@@ -149,6 +156,13 @@ export default function Home() {
           Submit
         </Button>
       </form>
+
+      <DatePicker defaultValue={dayjs('2022-04-17')} />
+      <TimePicker sx={{
+          marginBottom:6
+        }}
+        label="Basic time picker" />
+      <FileExplorer/>
     </Container>
   );
 }
